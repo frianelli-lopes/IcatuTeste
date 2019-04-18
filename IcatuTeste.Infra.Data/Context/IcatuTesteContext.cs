@@ -1,4 +1,5 @@
 ﻿using IcatuTeste.Domain.Models;
+using IcatuTeste.Infra.Data.Configurations;
 using Microsoft.EntityFrameworkCore;
 
 namespace IcatuTeste.Infra.Data.Context
@@ -10,13 +11,13 @@ namespace IcatuTeste.Infra.Data.Context
         {
         }
 
-        public DbSet<Cliente> Clientes { get; set; }
-        public DbSet<Endereco> Enderecos { get; set; }
+        public DbSet<Cliente> Cliente { get; set; }
+        public DbSet<Endereco> Endereco { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new AcompanhamentoConfiguration());
-            modelBuilder.ApplyConfiguration(new AnexoConfiguration());
+            modelBuilder.ApplyConfiguration(new ClienteConfiguration());
+            modelBuilder.ApplyConfiguration(new EnderecoConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

@@ -11,6 +11,13 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\IcatuTeste.Infra.Data\IcatuTeste.Infra.Data.csproj" />
+    <ProjectReference Include="..\IcatuTeste.Infra.IoC\IcatuTeste.Infra.IoC.csproj" />
+    <ProjectReference Include="..\IcatuTeste.Service\IcatuTeste.Service.csproj" />
   </ItemGroup>
 
 </Project>
