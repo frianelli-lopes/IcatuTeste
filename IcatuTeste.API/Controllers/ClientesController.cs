@@ -1,4 +1,6 @@
-﻿using IcatuTeste.Domain.Interfaces.Services;
+﻿using AutoMapper;
+using IcatuTeste.API.ViewModels;
+using IcatuTeste.Domain.Interfaces.Services;
 using IcatuTeste.Domain.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -12,39 +14,46 @@ namespace IcatuTeste.API.Controllers
     public class ClientesController : ControllerBase
     {
         private readonly IClienteService _service;
+        private readonly IMapper _mapper;
 
-        public ClientesController(IClienteService service)
+        public ClientesController(IClienteService service, IMapper mapper)
         {
             _service = service;
+            _mapper = mapper;
         }
 
         // GET: api/Clientes
         [HttpGet]
-        public IEnumerable<Cliente> Get()
+        public IEnumerable<CustomerViewModel> Get()
         {
-            return _service.Listar();
+            var clientes = _service.Listar();
+            return _mapper.Map<IEnumerable<CustomerViewModel>>(clientes);
         }
 
         // GET: api/Clientes/5
         [HttpGet("{id}", Name = "Get")]
-        public Cliente Get(int id)
+        public CustomerViewModel Get(int id)
         {
-            return _service.RecuperarPorId(id);
+            var cliente = _service.RecuperarPorId(id);
+            return _mapper.Map<CustomerViewModel>(cliente);
         }
 
         // POST: api/Clientes
         [HttpPost]
-        public void Post([FromBody] Cliente model)
+        public void Post([FromBody] CustomerViewModel model)
         {
-            _service.Incluir(model);
+            var cliente = _mapper.Map<Cliente>(model);
+            _service.Incluir(cliente);
         }
 
         // PUT: api/Clientes/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Cliente model)
+        public void Put(int id, [FromBody] CustomerViewModel model)
         {
             model.Id = id;
-            _service.Alterar(model);
+
+            var cliente = _mapper.Map<Cliente>(model);
+            _service.Alterar(cliente);
         }
 
         // DELETE: api/ApiWithActions/5

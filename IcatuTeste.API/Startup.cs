@@ -1,4 +1,5 @@
-﻿using IcatuTeste.API.Utils;
+﻿using AutoMapper;
+using IcatuTeste.API.Utils;
 using IcatuTeste.Infra.Data.Context;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -53,6 +54,8 @@ namespace IcatuTeste.API
                     builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowCredentials().Build();
                 });
             });
+
+            services.AddAutoMapper();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
