@@ -13,6 +13,8 @@ namespace IcatuTeste.Infra.Data.Configurations
 
             builder.Property(p => p.Nome).HasColumnType("varchar(100)").HasMaxLength(100).IsRequired();
 
+            builder.Property(p => p.DataNascimento).HasColumnType("varchar(10)").HasMaxLength(10).IsRequired();
+
             builder.Property(p => p.Sexo).HasColumnType("char(1)").HasMaxLength(1).IsRequired();
 
             builder.Property(p => p.CPF).HasColumnType("varchar(11)").HasMaxLength(11).IsRequired();

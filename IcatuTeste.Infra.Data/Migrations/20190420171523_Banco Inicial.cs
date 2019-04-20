@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace IcatuTeste.Infra.Data.Migrations
@@ -15,7 +14,7 @@ namespace IcatuTeste.Infra.Data.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Nome = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
-                    DataNascimento = table.Column<DateTime>(nullable: false),
+                    DataNascimento = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: false),
                     Sexo = table.Column<string>(type: "char(1)", maxLength: 1, nullable: false),
                     CPF = table.Column<string>(type: "varchar(11)", maxLength: 11, nullable: false)
                 },
